@@ -2,7 +2,7 @@
 # Math library
 # Author: Sébastien Combéfis
 # Version: February 8, 2018
-
+from math import sqrt
 def fact(n):
 	"""Computes the factorial of a natural number.
 	
@@ -10,7 +10,13 @@ def fact(n):
 	Post: Returns the factorial of 'n'.
 	Throws: ValueError if n < 0
 	"""
-	pass
+	if n<0:
+		raise ValueError()
+	elif n==0:
+		return 1
+
+	return n*fact(n-1)
+
 
 def roots(a, b, c):
 	"""Computes the roots of the ax^2 + bx + x = 0 polynomial.
@@ -19,7 +25,16 @@ def roots(a, b, c):
 	Post: Returns a tuple with zero, one or two elements corresponding
 		to the roots of the ax^2 + bx + c polynomial.
 	"""
-	pass
+	delta = b**2-4*a*c
+	if delta < 0:
+		raise ValueError()
+	elif delta == 0:
+		x1 = (-b + sqrt(delta)) / (2 * a)
+		return (x1)
+	else:
+		x1 = (-b+sqrt(delta))/(2*a)
+		x2 = (-b-sqrt(delta))/(2*a)
+		return (x1, x2)
 
 def integrate(function, lower, upper):
 	"""Approximates the integral of a fonction between two bounds
